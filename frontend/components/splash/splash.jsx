@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import MapContainer from '../map/map_container';
 
 class Splash extends React.Component{
   constructor(props){
@@ -10,6 +11,7 @@ class Splash extends React.Component{
     return (
       <div className="main splash">
         <h1 className=""></h1>
+        <MapContainer />
       </div>
     );
   }

@@ -5,6 +5,9 @@ import App from './app';
 import SessionFormContainer from './session/session_form_container';
 import SplashContainer from './splash/splash_container';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// Needed for onTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
