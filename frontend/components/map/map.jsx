@@ -59,29 +59,16 @@ let _mapOptions = {
 };
 
 let restaurantDummies = [
-  { id: 1, lat: 25.044866, lng: 121.5442743 },
-  { id: 2, lat: 25.041146, lng: 121.5421783 },
-  { id: 3, lat: 25.049526, lng: 121.5416753 },
-  { id: 4, lat: 25.046316, lng: 121.5494793 },
-  { id: 5, lat: 25.043696, lng: 121.5479713 }
+  { id: 1, name: "Happy Restaurant", lat: 25.044866, lng: 121.5442743 },
+  { id: 2, name: "Good Luck Restaurant", lat: 25.041146, lng: 121.5421783 },
+  { id: 3, name: "Best Restaurant", lat: 25.049526, lng: 121.5416753 },
+  { id: 4, name: "Golden Restaurant", lat: 25.046316, lng: 121.5494793 },
+  { id: 5, name: "Great Restaurant", lat: 25.043696, lng: 121.5479713 }
 ];
 
 class Map extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      open: false,
-    };
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
-
-  handleOpen(){
-    this.setState({open: true});
-  }
-
-  handleClose(){
-    this.setState({open: false});
   }
 
   componentDidMount(){
@@ -97,7 +84,6 @@ class Map extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    this.map.setCenter(nextProps.searchFilters.center);
   }
 
   _registerListeners(){
@@ -116,7 +102,8 @@ class Map extends Component {
   }
 
   _handleMarkerClick(restaurant){
-    this.props.router.replace(`restaurants/${restaurant.id}`);
+    // this.props.router.replace(`restaurants/${restaurant.id}`);
+    $( "div#change-me" ).replaceWith( `<div id="change-me">${restaurant.name}</div>` );
   }
 
   _handleClick(coords){
@@ -132,6 +119,7 @@ class Map extends Component {
       <div>
         <img style={{display:"block", margin:"auto"}} src="https://i0.wp.com/imgsynergy.com/product_creatives/7f7fc0078be5c9b3938431552bb79f16.gif"/>
         <div className="map" id="map-container" ref="map">Map</div>
+        <div id="change-me">HELLO! Click the markers above!</div>
       </div>
     );
   }
